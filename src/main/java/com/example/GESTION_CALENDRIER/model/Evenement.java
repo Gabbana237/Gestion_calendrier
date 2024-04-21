@@ -1,44 +1,53 @@
-// package com.example.GESTION_CALENDRIER.model;
+ package com.example.GESTION_CALENDRIER.model;
 
-// import jakarta.persistence.*;
+ import jakarta.persistence.*;
 
-// @Entity
-// @Table(name = "EVENEMENT")
-// public class Evenement {
+ @Entity
+ @Table(name = "EVENEMENT")
+ public class Evenement {
+  @Id
+  @GeneratedValue
+      private String id; // Supposez que l'identifiant est de type String
+
+        // Getter et Setter pour l'identifiant
+      public String getId() {
+         return id;
+     }
+
+      public void setId(String id) {
+        this.id = id;
+     }
+   
+
+     
+     private String idServiceAdmin;
+
+     
+     private String idCalendrier;
+
+     
+     private String idServiceAdminSupprimer;
+
     
-//     @Id
-//     @Column(name = "I")
-//     private String i;
+     private String idServiceAdminModifier;
 
-//     @Column(name = "ID_SERVICE_ADMIN")
-//     private String idServiceAdmin;
+     
+     private String dateDebut;
 
-//     @Column(name = "ID_CALENDRIER")
-//     private String idCalendrier;
+     
+     private String dateFin;
 
-//     @Column(name = "ID_SERVICE_ADMIN_SUPPRIMER")
-//     private String idServiceAdminSupprimer;
+  
+     private String lieu;
 
-//     @Column(name = "ID_SERVICE_ADMIN_MODIFIER")
-//     private String idServiceAdminModifier;
+     
+     private String description;
 
-//     @Column(name = "DATE_DEBUT")
-//     private String dateDebut;
+     
+     private String heureDebut;
 
-//     @Column(name = "DATE_FIN")
-//     private String dateFin;
-
-//     @Column(name = "LIEU")
-//     private String lieu;
-
-//     @Column(name = "DESCRIPTION")
-//     private String description;
-
-//     @Column(name = "HEURE_DEB")
-//     private String heureDebut;
-
-//     @Column(name = "HEURE_FIN")
-//     private String heureFin;
+    
+     private String heureFin;
 
 //     // Constructor, getters, and setters
-// }
+ }
