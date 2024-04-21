@@ -1,8 +1,8 @@
-// package com.example.GESTION_CALENDRIER.model;
+//package com.example.GESTION_CALENDRIER.model;
 
-// import jakarta.persistence.*;
+//import jakarta.persistence.*;
 
-// @Entity
+//@Entity
 // @Table(name = "ELEVE")
 // public class Eleve {
     

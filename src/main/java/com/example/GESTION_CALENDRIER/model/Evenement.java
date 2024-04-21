@@ -7,15 +7,15 @@
  public class Evenement {
   @Id
   @GeneratedValue
-      private String id; // Supposez que l'identifiant est de type String
+      private String i; // Supposez que l'identifiant est de type String
 
         // Getter et Setter pour l'identifiant
       public String getId() {
-         return id;
+         return i;
      }
 
-      public void setId(String id) {
-        this.id = id;
+      public void setId(String i) {
+        this.i = i;
      }
    
 
