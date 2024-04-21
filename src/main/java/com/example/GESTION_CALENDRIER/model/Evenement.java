@@ -4,9 +4,9 @@
 
  @Entity
  public class Evenement {
-  @Id
-  @GeneratedValue
-      private String id; // Supposez que l'identifiant est de type String
+    @Id
+    @GeneratedValue
+    private Long id; // Supposez que l'identifiant est de type String
 
      private String idServiceAdmin;
 
@@ -38,12 +38,12 @@
      private String heureFin;
 
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

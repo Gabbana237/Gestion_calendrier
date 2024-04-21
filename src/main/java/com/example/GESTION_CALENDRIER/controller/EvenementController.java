@@ -1,4 +1,4 @@
-package com.example.GESTION_CALENDRIER;
+package com.example.GESTION_CALENDRIER.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,19 +8,22 @@ import com.example.GESTION_CALENDRIER.model.Evenement;
 import com.example.GESTION_CALENDRIER.repository.EvenementRepository;
 
 @RestController
-@RequestMapping("/evenements")
 public class EvenementController {
 
     @Autowired
     private EvenementRepository evenementRepository;
 
-    @PostMapping
-    public ResponseEntity<Evenement> createEvenement(@RequestBody Evenement evenement) {
-        Evenement savedEvenement = evenementRepository.save(evenement);
-        return new ResponseEntity<>(savedEvenement, HttpStatus.CREATED);
+    // @PostMapping("/evenements")
+    // public ResponseEntity<Evenement> createEvenement(@RequestBody Evenement evenement) {
+    //     Evenement savedEvenement = evenementRepository.save(evenement);
+    //     return new ResponseEntity<>(savedEvenement, HttpStatus.CREATED);
+    // }
+    @PostMapping("/evenements")
+        Evenement newEvenement(@RequestBody Evenement newEvenement){
+        return evenementRepository.save(newEvenement);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Evenement> updateEvenement(@PathVariable String id, @RequestBody Evenement evenementDetails) {
+    public ResponseEntity<Evenement> updateEvenement(@PathVariable Long id, @RequestBody Evenement evenementDetails) {
         Evenement evenement = evenementRepository.findById(id).orElse(null);
         if (evenement != null) {
             // Mise à jour des détails de l'événement existant avec les détails fournis
@@ -41,9 +44,9 @@ public class EvenementController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-   
+    }
         @DeleteMapping("/{id}")
-        public ResponseEntity<Void> deleteEvenement(@PathVariable String id) {
+        public ResponseEntity<Void> deleteEvenement(@PathVariable Long id) {
 
             Evenement evenement = evenementRepository.findById(id).orElse(null);
             if (evenement != null) {
@@ -53,6 +56,6 @@ public class EvenementController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         }
-    }
+    
 }
 
