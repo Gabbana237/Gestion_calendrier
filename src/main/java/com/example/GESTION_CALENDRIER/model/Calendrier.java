@@ -1,5 +1,8 @@
 package com.example.GESTION_CALENDRIER.model;
 
+import java.sql.Date;
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -9,26 +12,28 @@ public class Calendrier {
     
     @Id
     @GeneratedValue
-    private String idCalendrier;
-    private String session;
-
-    public Calendrier(String idCalendrier, String session) {
-        this.idCalendrier = idCalendrier;
-        this.session = session;
-    }
-    public String getIdCalendrier() {
+    private Long idCalendrier;
+    private Date sessionDebut;
+    private Date sessionFin;
+    public Long getIdCalendrier() {
         return idCalendrier;
     }
-    public void setIdCalendrier(String idCalendrier) {
+    public void setIdCalendrier(Long idCalendrier) {
         this.idCalendrier = idCalendrier;
     }
-    public String getSession() {
-        return session;
+    public Date getSessionDebut() {
+        return sessionDebut;
     }
-    public void setSession(String session) {
-        this.session = session;
+    public void setSessionDebut(Date sessionDebut) {
+        this.sessionDebut = sessionDebut;
     }
-    
+    public Date getSessionFin() {
+        return sessionFin;
+    }
+    public void setSessionFin(Date sessionFin) {
+        this.sessionFin = sessionFin;
+    }
+
 
     
 

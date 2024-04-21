@@ -1,53 +1,53 @@
-package com.example.GESTION_CALENDRIER.model;
+// package com.example.GESTION_CALENDRIER.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.Id;
 
-@Entity
-public class Consulter {
+// @Entity
+// public class Consulter {
     
-    @Id
-    @GeneratedValue
-    private String idEleve;
+//     @Id
+//     @GeneratedValue
+//     private String idEleve;
 
-    private String idEnseignant;
+//     private String idEnseignant;
 
-    private String idParent;
+//     private String idParent;
 
-    private String idCalendrier;
+//     private String idCalendrier;
 
-    public String getIdEleve() {
-        return idEleve;
-    }
+//     public String getIdEleve() {
+//         return idEleve;
+//     }
 
-    public void setIdEleve(String idEleve) {
-        this.idEleve = idEleve;
-    }
+//     public void setIdEleve(String idEleve) {
+//         this.idEleve = idEleve;
+//     }
 
-    public String getIdEnseignant() {
-        return idEnseignant;
-    }
+//     public String getIdEnseignant() {
+//         return idEnseignant;
+//     }
 
-    public void setIdEnseignant(String idEnseignant) {
-        this.idEnseignant = idEnseignant;
-    }
+//     public void setIdEnseignant(String idEnseignant) {
+//         this.idEnseignant = idEnseignant;
+//     }
 
-    public String getIdParent() {
-        return idParent;
-    }
+//     public String getIdParent() {
+//         return idParent;
+//     }
 
-    public void setIdParent(String idParent) {
-        this.idParent = idParent;
-    }
+//     public void setIdParent(String idParent) {
+//         this.idParent = idParent;
+//     }
 
-    public String getIdCalendrier() {
-        return idCalendrier;
-    }
+//     public String getIdCalendrier() {
+//         return idCalendrier;
+//     }
 
-    public void setIdCalendrier(String idCalendrier) {
-        this.idCalendrier = idCalendrier;
-    }
+//     public void setIdCalendrier(String idCalendrier) {
+//         this.idCalendrier = idCalendrier;
+//     }
 
 
-}
+// }
