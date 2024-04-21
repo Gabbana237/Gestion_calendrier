@@ -4,8 +4,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.GESTION_CALENDRIER.exception.EvenementNotFoundException;
 import com.example.GESTION_CALENDRIER.model.Evenement;
 import com.example.GESTION_CALENDRIER.repository.EvenementRepository;
+import java.util.List;
 
 @RestController
 public class EvenementController {
@@ -56,6 +58,16 @@ public class EvenementController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         }
+
+        @GetMapping("/allevents")
+        List<Evenement> getAllUsers(){
+        return evenementRepository.findAll();
+    }
+
+    @GetMapping("/event/{id}")
+    Evenement getEleveById(@PathVariable Long id) {
+    	return evenementRepository.findById(id).orElseThrow(()->new EvenementNotFoundException(id));
+    }
     
 }
 
