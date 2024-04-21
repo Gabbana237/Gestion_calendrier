@@ -5,40 +5,49 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "EVENEMENT")
 public class Evenement {
-    
-    @Id
-    @Column(name = "I")
-    private String i;
+ @Id
+ @GeneratedValue
+     private String id; // Supposez que l'identifiant est de type String
 
-    @Column(name = "ID_SERVICE_ADMIN")
+       // Getter et Setter pour l'identifiant
+     public String getId() {
+        return id;
+    }
+
+     public void setId(String id) {
+       this.id = id;
+    }
+  
+
+    
     private String idServiceAdmin;
 
-    @Column(name = "ID_CALENDRIER")
+    
     private String idCalendrier;
 
-    @Column(name = "ID_SERVICE_ADMIN_SUPPRIMER")
+    
     private String idServiceAdminSupprimer;
 
-    @Column(name = "ID_SERVICE_ADMIN_MODIFIER")
+   
     private String idServiceAdminModifier;
 
-    @Column(name = "DATE_DEBUT")
+    
     private String dateDebut;
 
-    @Column(name = "DATE_FIN")
+    
     private String dateFin;
 
-    @Column(name = "LIEU")
+ 
     private String lieu;
 
-    @Column(name = "DESCRIPTION")
+    
     private String description;
 
-    @Column(name = "HEURE_DEB")
+    
     private String heureDebut;
 
-    @Column(name = "HEURE_FIN")
+   
     private String heureFin;
 
-    // Constructor, getters, and setters
+//     // Constructor, getters, and setters
 }
