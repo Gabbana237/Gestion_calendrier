@@ -60,12 +60,12 @@ public class EvenementController {
         }
 
         @GetMapping("/allevents")
-        List<Evenement> getAllUsers(){
+        List<Evenement> getAllEvent(){
         return evenementRepository.findAll();
     }
 
     @GetMapping("/event/{id}")
-    Evenement getEleveById(@PathVariable Long id) {
+    Evenement getEventById(@PathVariable Long id) {
     	return evenementRepository.findById(id).orElseThrow(()->new EvenementNotFoundException(id));
     }
     
