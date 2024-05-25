@@ -1,5 +1,6 @@
 package com.example.GESTION_CALENDRIER.controller;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -7,9 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import com.example.GESTION_CALENDRIER.exception.EvenementNotFoundException;
 import com.example.GESTION_CALENDRIER.model.Evenement;
 import com.example.GESTION_CALENDRIER.repository.EvenementRepository;
+
+
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 public class EvenementController {
 
     @Autowired
@@ -24,29 +31,49 @@ public class EvenementController {
         Evenement newEvenement(@RequestBody Evenement newEvenement){
         return evenementRepository.save(newEvenement);
     }
-    @PutMapping("/{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<Evenement> updateEvenement(@PathVariable Long id, @RequestBody Evenement evenementDetails) {
         Evenement evenement = evenementRepository.findById(id).orElse(null);
         if (evenement != null) {
-            // Mise à jour des détails de l'événement existant avec les détails fournis
-            evenement.setIdServiceAdmin(evenementDetails.getIdServiceAdmin());
-            evenement.setIdCalendrier(evenementDetails.getIdCalendrier());
-            evenement.setIdServiceAdminSupprimer(evenementDetails.getIdServiceAdminSupprimer());
-            evenement.setIdServiceAdminModifier(evenementDetails.getIdServiceAdminModifier());
-            evenement.setDateDebut(evenementDetails.getDateDebut());
-            evenement.setDateFin(evenementDetails.getDateFin());
-            evenement.setLieu(evenementDetails.getLieu());
-            evenement.setDescription(evenementDetails.getDescription());
-            evenement.setHeureDebut(evenementDetails.getHeureDebut());
-            evenement.setHeureFin(evenementDetails.getHeureFin());
-
-            // Enregistrer les modifications dans la base de données
+            if (evenementDetails.getIdServiceAdmin() != null) {
+                evenement.setIdServiceAdmin(evenementDetails.getIdServiceAdmin());
+            }
+            if (evenementDetails.getIdCalendrier() != null) {
+                evenement.setIdCalendrier(evenementDetails.getIdCalendrier());
+            }
+            if (evenementDetails.getIdServiceAdminSupprimer() != null) {
+                evenement.setIdServiceAdminSupprimer(evenementDetails.getIdServiceAdminSupprimer());
+            }
+            if (evenementDetails.getIdServiceAdminModifier() != null) {
+                evenement.setIdServiceAdminModifier(evenementDetails.getIdServiceAdminModifier());
+            }
+            if (evenementDetails.getDateDebut() != null) {
+                evenement.setDateDebut(evenementDetails.getDateDebut());
+            }
+            if (evenementDetails.getDateFin() != null) {
+                evenement.setDateFin(evenementDetails.getDateFin());
+            }
+            if (evenementDetails.getLieu() != null) {
+                evenement.setLieu(evenementDetails.getLieu());
+            }
+            if (evenementDetails.getDescription() != null) {
+                evenement.setDescription(evenementDetails.getDescription());
+            }
+            if (evenementDetails.getHeureDebut() != null) {
+                evenement.setHeureDebut(evenementDetails.getHeureDebut());
+            }
+            if (evenementDetails.getHeureFin() != null) {
+                evenement.setHeureFin(evenementDetails.getHeureFin());
+            }
+    
+            // Save the updated event in the database
             Evenement updatedEvenement = evenementRepository.save(evenement);
             return new ResponseEntity<>(updatedEvenement, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
         @DeleteMapping("/{id}")
         public ResponseEntity<Void> deleteEvenement(@PathVariable Long id) {
 
@@ -69,5 +96,16 @@ public class EvenementController {
     	return evenementRepository.findById(id).orElseThrow(()->new EvenementNotFoundException(id));
     }
     
+    @GetMapping("/events/{dateDebut}")
+    public List<Evenement> getEventsByDateDebut(@PathVariable String dateDebut) {
+        // Convertir la chaîne de caractères en LocalDate
+        LocalDate dateDebuta = LocalDate.parse(dateDebut, DateTimeFormatter.ISO_DATE);
+        // Appeler la méthode du repository
+        return evenementRepository.findByDateDebut(dateDebuta.toString());
+    }
+
+
+
+
 }
 
